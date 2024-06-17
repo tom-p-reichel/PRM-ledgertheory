@@ -357,7 +357,7 @@ Lemma tx_of_Block_supported_lem_1 blockheight rew (bh:BlockHeader) (bd:BlockDelt
   stake bh + utot + rew.
   intros HT Lsubqc HvBae H5 H3.
   simpl. rewrite asset_value_out_app.
-  omega.
+  lia.
 Qed.
 
 Theorem tx_of_Block_supported blockheight rew check_hit targetf plr ti (b:Block) :
@@ -653,7 +653,7 @@ induction bc as [[bh bd]|n bc IH [bh bd]].
   generalize (octree_tx_asset_value_sum (Some (ctree_of_Block (bh,bd))) (tx_of_Block (bh,bd)) 0 (rewfn 0) al bl L1 L2 L3 L5 L8).
   rewrite H3.
   assert (L9: asset_value_sum bl + 0 = asset_value_sum bl).
-  { clear. omega. }
+  { clear. lia. }
   rewrite L9. exact (fun H => H).
 - intros bl ti [ti' [H4 [H5 Hti]]] H6.
   generalize H5.
@@ -730,6 +730,6 @@ induction bc as [[bh bd]|n bc IH [bh bd]].
   }
   generalize (octree_tx_asset_value_sum (Some (ctree_of_Block (bh,bd))) (tx_of_Block (bh,bd)) 0 (rewfn (S n)) (totalassets_ f) bl L1 L2 L3 L5 L8).
   assert (L9: asset_value_sum bl + 0 = asset_value_sum bl).
-  { clear. omega. }
+  { clear. lia. }
   rewrite L9. exact (fun H => H).
 Qed.

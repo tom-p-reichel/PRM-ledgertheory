@@ -256,7 +256,7 @@ intros [Hf1 [Hf2 [Hf3 Hf4]]] Ht2. split.
       change (h = hashpair (hashtx (inpl, outpl)) (hashnat k)) in H6.
       assert (L1: j = k).
       { subst h. apply hashpairinj in H6. destruct H6 as [H7 H8].
-        apply hashnatinj in H8. omega. }
+        apply hashnatinj in H8. lia. }
       subst k. rewrite H3 in H5. inversion H5. tauto.
     * exfalso.
       apply new_assets_iff in H1. destruct H1 as [j [H3 H4]].
@@ -757,7 +757,7 @@ unfold statefun_totalunits at 1.
 rewrite <- (app_perm_asset_value_sum _ _ (sf_totalassets_remove_assets f inpl L1 Ht1)).
 clear L1.
 induction H as [|h a u inpl alpha v H1 IH1 H2|h a inpl alpha v H1 IH1 H2 H3].
-- simpl. rewrite remove_assets_nil. unfold statefun_totalunits. omega.
+- simpl. rewrite remove_assets_nil. unfold statefun_totalunits. lia.
 - simpl.
   assert (L3:forall h alpha, In (alpha, h) inpl -> exists u : prod obligation preasset, In (h, u) (f alpha)).
   { intros k beta H3. apply Ht1. now right. }
@@ -774,7 +774,7 @@ induction H as [|h a u inpl alpha v H1 IH1 H2|h a inpl alpha v H1 IH1 H2 H3].
       destruct a as [h [obl u']]. exact H2.
     - exact H.
   }
-  omega.
+  lia.
 - simpl.
   assert (L3:forall h alpha, In (alpha, h) inpl -> exists u : prod obligation preasset, In (h, u) (f alpha)).
   { intros k beta H4. apply Ht1. now right. }
@@ -791,7 +791,7 @@ induction H as [|h a u inpl alpha v H1 IH1 H2|h a inpl alpha v H1 IH1 H2 H3].
       destruct a as [h [obl u']]. exact H2.
     - exact H3.
   }
-  omega.
+  lia.
 Qed.
 
 Theorem totalunits_bdd (f:statefun) (tx:Tx) (fee rew:nat) :
@@ -832,6 +832,6 @@ assert (L1:utot + (statefun_totalunits
   - destruct tx as [inpl outpl]. destruct Ht as [_ Ht2b]. exact Ht2b.
   - exact H1.
 }
-omega.
+lia.
 Qed.
 

@@ -143,10 +143,10 @@ induction n as [|n IH].
           simpl in H1.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [_ H4].
           split.
@@ -168,7 +168,7 @@ induction n as [|n IH].
           simpl in H1.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [_ H4].
           split.
@@ -184,7 +184,7 @@ induction n as [|n IH].
             * exact H3.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - discriminate H1.
       }
     * { simpl. exists Tl. exists Tr. simpl in H4. subst k. repeat split.
@@ -198,7 +198,7 @@ induction n as [|n IH].
           simpl in H1.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [_ H4].
           split.
@@ -210,7 +210,7 @@ induction n as [|n IH].
             * exact H3.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - exfalso. discriminate H1.
       }
     * { simpl. simpl in H4.
@@ -219,10 +219,10 @@ induction n as [|n IH].
           simpl in H1.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [_ H4].
           split.
@@ -251,10 +251,10 @@ induction n as [|n IH].
             * exact H3.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - exfalso. inversion H1. rewrite H0 in H4.
           apply hashpairinj in H4. destruct H4 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - discriminate H1.
       }
   + intros [H1 H2]. split.

@@ -63,7 +63,7 @@ end.
 Lemma hashpreassetinj a b :
 hashpreasset a = hashpreasset b -> a = b.
 destruct a as [u|d]; destruct b as [v|d'];
-  try (simpl; intros H1; exfalso; apply hashpairinj in H1; destruct H1 as [H1 _]; apply hashnatinj in H1; omega).
+  try (simpl; intros H1; exfalso; apply hashpairinj in H1; destruct H1 as [H1 _]; apply hashnatinj in H1; lia).
 - simpl. intros H1.
   apply hashpairinj in H1. destruct H1 as [_ H1].
   apply hashnatinj in H1.
@@ -176,7 +176,7 @@ Lemma asset_value_out_app (l r:list addr_preasset) :
   asset_value_out (l ++ r) = asset_value_out l + asset_value_out r.
 induction l as [|[beta [obl u]] l IH].
 - simpl. reflexivity.
-- simpl. destruct u as [u|d]; simpl; omega.
+- simpl. destruct u as [u|d]; simpl; lia.
 Qed.
 
 Definition preasset_eq_dec (a1 a2:preasset) : {a1 = a2} + {a1 <> a2}.
@@ -269,36 +269,36 @@ destruct a as [h [obl u]]. revert i. induction aul as [|[beta [obl' v]] aur IH].
   + intros [H2|H2].
     * { exists 0. simpl. split.
         - inversion H2. subst beta. reflexivity.
-        - assert (L1: i + 0 = i) by omega.
+        - assert (L1: i + 0 = i) by lia.
           rewrite L1.
           congruence.
       }
     * { apply IH in H2. destruct H2 as [j [H3 H4]]. exists (S j). split.
         - exact H3.
-        - assert (L1: i + S j = S i + j) by omega.
+        - assert (L1: i + S j = S i + j) by lia.
           rewrite L1.
           exact H4.
       }
   + intros [[|j] [H2 H3]]; simpl in *|-*.
     * { left. inversion H2. f_equal.
-        assert (L1: i + 0 = i) by omega.
+        assert (L1: i + 0 = i) by lia.
         rewrite L1 in H3. now symmetry.
        }
     * { right. apply IH. exists j. split.
         - assumption.
-        - assert (L1: S i + j = i + S j) by omega.
+        - assert (L1: S i + j = i + S j) by lia.
           rewrite L1. assumption.
       }
   + intros H2. apply IH in H2. destruct H2 as [j [H3 H4]].
     exists (S j). split.
     * exact H3.
-    * assert (L1: i + S j = S i + j) by omega.
+    * assert (L1: i + S j = S i + j) by lia.
       rewrite L1. assumption.
   + intros [[|j] [H2 H3]].
     * exfalso. simpl in H2. inversion H2. congruence.
     * { apply IH. exists j. split.
         - exact H2.
-        - assert (L1: S i + j = i + S j) by omega.
+        - assert (L1: S i + j = i + S j) by lia.
           rewrite L1. assumption.
       }
 Qed.
@@ -352,7 +352,7 @@ revert i. induction aul as [|[beta [obl v]] aur IH]; intros i.
   + apply no_dups_cons.
     * intros H2. apply new_assets_iff in H2. destruct H2 as [j [H3 H4]].
       apply hashpairinj in H4. destruct H4 as [_ H4].
-      apply hashnatinj in H4. omega.
+      apply hashnatinj in H4. lia.
     * apply IH.
   + apply IH.
 Qed.
@@ -443,11 +443,11 @@ Lemma app_perm_asset_value_sum (l r:list asset) :
   app_perm l r ->
   asset_value_sum l = asset_value_sum r.
 intros H. induction H as [l r|l1 r1 l2 r2 H1 IH1 H2 IH2|l|l r H1 IH1|l r s H1 IH1 H2 IH2].
-- rewrite <- asset_value_sum_app. rewrite <- asset_value_sum_app. omega.
-- rewrite <- asset_value_sum_app. rewrite <- asset_value_sum_app. omega.
-- omega.
-- omega.
-- omega.
+- rewrite <- asset_value_sum_app. rewrite <- asset_value_sum_app. lia.
+- rewrite <- asset_value_sum_app. rewrite <- asset_value_sum_app. lia.
+- lia.
+- lia.
+- lia.
 Qed.
 
 Lemma remove_assets_app (al bl:list asset) (rl:list hashval) :
@@ -553,7 +553,7 @@ intros H H0. induction H as [|k v al H1 H2 IH].
           + rewrite (asset_value_sum_value_cons _ _ _ E1).
             rewrite (asset_value_sum_value_cons _ _ _ E1).
             apply IH in H3.
-            * omega.
+            * lia.
             * exact E0.
           + rewrite (asset_value_sum_novalue_cons _ _ E1).
             rewrite (asset_value_sum_novalue_cons _ _ E1).
@@ -599,7 +599,7 @@ intros H H0. induction H as [|k v al H1 H2 IH].
           + rewrite (asset_value_sum_value_cons _ _ _ E1).
             rewrite (asset_value_sum_value_cons _ _ _ E1).
             apply IH in H3.
-            * omega.
+            * lia.
             * exact H3'.
           + rewrite (asset_value_sum_novalue_cons _ _ E1).
             rewrite (asset_value_sum_novalue_cons _ _ E1).
@@ -620,17 +620,17 @@ revert i. induction outpl as [|[k [obl v]] outpr IH]; intros i.
   + intros [H1|H1].
     * { inversion H1. exists 0. split.
         - reflexivity.
-        - f_equal. f_equal. omega.
+        - f_equal. f_equal. lia.
       }
     * { apply IH in H1. destruct H1 as [j [H2 H3]]. exists (S j). split.
         - exact H2.
-        - rewrite H3. f_equal. f_equal. omega.
+        - rewrite H3. f_equal. f_equal. lia.
       }
   + intros [[|j] [H1 H2]].
     * left. simpl in H1. inversion H1. rewrite H2.
-      f_equal. f_equal. f_equal. f_equal. omega.
+      f_equal. f_equal. f_equal. f_equal. lia.
     * { right. apply IH. exists j. split.
         - exact H1.
-        - rewrite H2. f_equal. f_equal. omega.
+        - rewrite H2. f_equal. f_equal. lia.
       }
 Qed.

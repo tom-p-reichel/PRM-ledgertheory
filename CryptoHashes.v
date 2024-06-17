@@ -215,10 +215,10 @@ intros hl1. induction hl1 as [|h1 hr1 IH]; intros [|h2 hr2] H1.
     subst h2. f_equal. apply IH. congruence.
   + exfalso. inversion H1.
     apply hashpairinj in H0. destruct H0 as [H0 _].
-    apply hashnatinj in H0. omega.
+    apply hashnatinj in H0. lia.
   + exfalso. inversion H1.
     apply hashpairinj in H0. destruct H0 as [H0 _].
-    apply hashnatinj in H0. omega.
+    apply hashnatinj in H0. lia.
   + inversion H1.
     apply hashpairinj in H0. destruct H0 as [_ H0].
     subst h2. f_equal. apply IH. congruence.

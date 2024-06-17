@@ -388,10 +388,10 @@ revert hl2. induction hl1 as [h1| |h1 hr1 IH]; simpl.
       congruence.
     * exfalso. inversion H1.
       apply hashpairinj in H0. destruct H0 as [H0 _].
-      apply hashnatinj in H0. omega.
+      apply hashnatinj in H0. lia.
     * exfalso. inversion H1.
       apply hashpairinj in H0. destruct H0 as [H0 _].
-      apply hashnatinj in H0. omega.
+      apply hashnatinj in H0. lia.
     * reflexivity.
 Qed.
 
@@ -635,10 +635,10 @@ intros H1 H. revert al H1. induction H as [hl|b hl H IH].
       now apply hashassetinj.
     * exfalso. inversion H1.
       apply hashpairinj in H0. destruct H0 as [H0 _].
-      apply hashnatinj in H0. omega.
+      apply hashnatinj in H0. lia.
     * exfalso. inversion H1.
       apply hashpairinj in H0. destruct H0 as [H0 _].
-      apply hashnatinj in H0. omega.
+      apply hashnatinj in H0. lia.
     * inversion H1.
       apply hashpairinj in H0. destruct H0 as [_ H0].
       now apply hashassetinj.
@@ -661,10 +661,10 @@ intros H1 H. revert al H1. induction H as [hl|b hl H IH].
       congruence.
     * exfalso. inversion H1.
       apply hashpairinj in H2. destruct H2 as [H2 _].
-      apply hashnatinj in H2. omega.
+      apply hashnatinj in H2. lia.
     * exfalso. inversion H1.
       apply hashpairinj in H2. destruct H2 as [H2 _].
-      apply hashnatinj in H2. omega.
+      apply hashnatinj in H2. lia.
     * reflexivity.
 Qed.
 
@@ -1400,10 +1400,10 @@ induction n as [|n IH].
           apply hashassetinj in H3. exact H3.
         - inversion H2.
           apply hashpairinj in H0. destruct H0 as [H3 _].
-          apply hashnatinj in H3. omega.
+          apply hashnatinj in H3. lia.
         - inversion H2.
           apply hashpairinj in H0. destruct H0 as [H3 _].
-          apply hashnatinj in H3. omega.
+          apply hashnatinj in H3. lia.
         - inversion H2.
           apply hashpairinj in H0. destruct H0 as [_ H3].
           apply hashassetinj in H3. exact H3.
@@ -1426,10 +1426,10 @@ induction n as [|n IH].
           congruence.
         - inversion H2.
           apply hashpairinj in H0. destruct H0 as [H3 _].
-          apply hashnatinj in H3. omega.
+          apply hashnatinj in H3. lia.
         - inversion H2.
           apply hashpairinj in H0. destruct H0 as [H3 _].
-          apply hashnatinj in H3. omega.
+          apply hashnatinj in H3. lia.
         - reflexivity.
       }
 - destruct T as [h|[Tl Tr]].
@@ -1639,11 +1639,11 @@ revert al. induction hl as [h| |[h [obl u]] hr IH]; intros al H0 H1 H2.
           repeat split; congruence.
         + exfalso. injection H2. intros H3.
           apply hashpairinj in H3. destruct H3 as [H3 _].
-          apply hashnatinj in H3. omega.
+          apply hashnatinj in H3. lia.
       - destruct (hashassetlist ar) as [k'|].
         + exfalso. injection H2. intros H3.
           apply hashpairinj in H3. destruct H3 as [H3 _].
-          apply hashnatinj in H3. omega.
+          apply hashnatinj in H3. lia.
         + injection H2. intros H3.
           apply hashpairinj in H3. destruct H3 as [_ H3].
           apply hashpairinj in H3. destruct H3 as [H3 H4].
@@ -1880,10 +1880,10 @@ revert al. induction hl as [h| |b hr IH].
           apply hashassetinj in H4. exact H4.
         - inversion H1.
           apply hashpairinj in H0. destruct H0 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - inversion H1.
           apply hashpairinj in H0. destruct H0 as [H4 _].
-          apply hashnatinj in H4. omega.
+          apply hashnatinj in H4. lia.
         - inversion H1.
           apply hashpairinj in H0. destruct H0 as [_ H4].
           apply hashassetinj in H4. exact H4.
@@ -1904,10 +1904,10 @@ revert al. induction hl as [h| |b hr IH].
             congruence.
           + inversion H1.
             apply hashpairinj in H5. destruct H5 as [H5 _].
-            apply hashnatinj in H5. omega.
+            apply hashnatinj in H5. lia.
           + inversion H1.
             apply hashpairinj in H5. destruct H5 as [H5 _].
-            apply hashnatinj in H5. omega.
+            apply hashnatinj in H5. lia.
           + reflexivity.
         - exact H0.
       }
@@ -2217,10 +2217,10 @@ split.
           congruence.
         - inversion H1.
           apply hashpairinj in H0. destruct H0 as [H0 _].
-          apply hashnatinj in H0. omega.
+          apply hashnatinj in H0. lia.
         - inversion H1.
           apply hashpairinj in H0. destruct H0 as [H0 _].
-          apply hashnatinj in H0. omega.
+          apply hashnatinj in H0. lia.
         - inversion H1.
           apply hashpairinj in H0. destruct H0 as [_ H0].
           apply hashassetinj in H0. subst b.

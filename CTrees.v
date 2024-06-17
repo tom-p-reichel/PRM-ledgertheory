@@ -444,7 +444,7 @@ Lemma ctree_asset_value_in_app T inpl1 inpl2 utot1 utot2 :
 intros H. induction H as [|h a u inpr1 alpha v H1 IH H2 H3 H4|h a inpr1 alpha v H1 IH H2 H3 H4].
 - intros H1. exact H1.
 - intros H5.
-  assert (L1: u + v + utot2 = u + (v + utot2)) by omega.
+  assert (L1: u + v + utot2 = u + (v + utot2)) by lia.
   rewrite L1.
   change (ctree_asset_value_in T ((alpha, h) :: (inpr1 ++ inpl2))
                                   (u + (v + utot2))).
@@ -2927,9 +2927,9 @@ destruct hl1 as [h1|[a1 hr1]]; simpl.
           apply hashpairinj in H1. destruct H1 as [_ H1].
           congruence.
         - exfalso. apply hashpairinj in H1. destruct H1 as [H1 _].
-          apply hashnatinj in H1. omega.
+          apply hashnatinj in H1. lia.
         - exfalso. apply hashpairinj in H1. destruct H1 as [H1 _].
-          apply hashnatinj in H1. omega.
+          apply hashnatinj in H1. lia.
         - reflexivity.
       }
 Qed.
@@ -2952,9 +2952,9 @@ destruct hl1 as [h1|[a1 hr1]]; simpl.
           apply hashpairinj in H1. destruct H1 as [_ H1].
           congruence.
         - exfalso. apply hashpairinj in H1. destruct H1 as [H1 _].
-          apply hashnatinj in H1. omega.
+          apply hashnatinj in H1. lia.
         - exfalso. apply hashpairinj in H1. destruct H1 as [H1 _].
-          apply hashnatinj in H1. omega.
+          apply hashnatinj in H1. lia.
         - reflexivity.
       }
 Qed.
@@ -3059,10 +3059,10 @@ induction n as [|n IH].
       split; try tauto; congruence.
     * intros H1. exfalso. inversion H1.
       apply hashpairinj in H0. destruct H0 as [H0 _].
-      apply hashnatinj in H0. omega.
+      apply hashnatinj in H0. lia.
     * intros H1. exfalso. inversion H1.
       apply hashpairinj in H0. destruct H0 as [H0 _].
-      apply hashnatinj in H0. omega.
+      apply hashnatinj in H0. lia.
     * intros H1. inversion H1.
       apply hashpairinj in H0. destruct H0 as [_ H0].
       split; try tauto; congruence.
@@ -3110,10 +3110,10 @@ induction n as [|n IH].
       split; try tauto; congruence.
     * intros H1. exfalso. inversion H1.
       apply hashpairinj in H0. destruct H0 as [H0 _].
-      apply hashnatinj in H0. omega.
+      apply hashnatinj in H0. lia.
     * intros H1. exfalso. inversion H1.
       apply hashpairinj in H0. destruct H0 as [H0 _].
-      apply hashnatinj in H0. omega.
+      apply hashnatinj in H0. lia.
     * intros H1. inversion H1.
       apply hashpairinj in H0. destruct H0 as [_ H0].
       split; try tauto; congruence.
@@ -3124,10 +3124,10 @@ induction n as [|n IH].
     split; congruence.
   + simpl. intros H1. exfalso. apply hashpairinj in H1.
     destruct H1 as [H2 _].
-    apply hashnatinj in H2. omega.
+    apply hashnatinj in H2. lia.
   + simpl. intros H1. exfalso. apply hashpairinj in H1.
     destruct H1 as [H2 _].
-    apply hashnatinj in H2. omega.
+    apply hashnatinj in H2. lia.
   + simpl. intros H1. apply hashpairinj in H1.
     destruct H1 as [_ H2].
     apply IH in H2. destruct H2 as [H3 H4].
@@ -3172,7 +3172,7 @@ induction n as [|n IH].
     destruct gamma as [[|] gamma].
     * exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
     * { change (subqm (mtreeB (ctree_mtree Tl) (empty_mtree n)) (mtreeB (singlebranch_mtree hl gamma) (empty_mtree n))).
         split.
         - apply IH.
@@ -3195,15 +3195,15 @@ induction n as [|n IH].
       }
     * exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
   + change (subqm (mtreeB (ctree_mtree Tl) (ctree_mtree Tr)) (singlebranch_mtree hl gamma)).
     destruct gamma as [[|] gamma].
     * exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
     * exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
 Qed.
 
 Lemma subqm_ctree_singlebranch_lub' {n} (T:ctree n) (hl:nehlist) (gamma:bitseq n) :
@@ -3293,10 +3293,10 @@ induction n as [|n IH].
       }
     * intros H1. exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
     * intros H1. exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
   + destruct T2 as [[gamma2 hl2]|[h2|[T2l|[T2r|[T2l T2r]]]]].
     * change (ctree_hashroot (ctreeBR T1r) = ctree_hashroot (ctreeL hl2 gamma2) ->
               subqm (ctree_mtree (ctreeBR T1r))
@@ -3314,7 +3314,7 @@ induction n as [|n IH].
       intros _. apply subqm_ref.
     * intros H1. exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
     * { change (ctree_hashroot (ctreeBR T1r) = ctree_hashroot (ctreeBR T2r) ->
                 subqm (ctree_mtree (ctreeBR T1r))
                       (ctree_mtree (ctree_lub (ctreeBR T1r) (ctreeBR T2r)))).
@@ -3329,14 +3329,14 @@ induction n as [|n IH].
       }
     * intros H1. exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
   + destruct T2 as [[[[|] gamma2] hl2]|[h2|[T2l|[T2r|[T2l T2r]]]]].
     * intros H1. exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
     * intros H1. exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
     * change (ctree_hashroot (ctreeB T1l T1r) = ctree_hashroot (ctreeH (S n) h2) ->
               subqm (ctree_mtree (ctreeB T1l T1r))
                     (ctree_mtree (ctree_lub (ctreeB T1l T1r) (ctreeH (S n) h2)))).
@@ -3346,10 +3346,10 @@ induction n as [|n IH].
       intros _. apply subqm_ref.
     * intros H1. exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
     * intros H1. exfalso. simpl in H1.
       apply hashpairinj in H1. destruct H1 as [H1 _].
-      apply hashnatinj in H1. omega.
+      apply hashnatinj in H1. lia.
     * { change (ctree_hashroot (ctreeB T1l T1r) = ctree_hashroot (ctreeB T2l T2r) ->
                 subqm (ctree_mtree (ctreeB T1l T1r))
                       (ctree_mtree (ctree_lub (ctreeB T1l T1r) (ctreeB T2l T2r)))).

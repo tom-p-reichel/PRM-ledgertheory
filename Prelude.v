@@ -6,7 +6,7 @@
 
 Require Export Coq.Lists.List.
 Require Export Coq.Arith.Peano_dec.
-Require Export omega.Omega.
+Require Export Lia.
 
 Lemma nth_error_In {X:Type} (l:list X) (i:nat) (x:X) :
   nth_error l i = value x -> In x l.
