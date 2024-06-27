@@ -433,10 +433,10 @@ asset_value_sum l
 +
 asset_value_sum r
 = 
-asset_value_sum (l ++ r).
+asset_value_sum (l ++ r). (* This proof was automatically repaired. *)
 unfold asset_value_sum. induction l as [|[h u] l IH].
 - simpl. reflexivity.
-- simpl. rewrite <- plus_assoc. rewrite IH. reflexivity.
+- simpl. rewrite <- PeanoNat.Nat.add_assoc . rewrite IH. reflexivity.
 Qed.
 
 Lemma app_perm_asset_value_sum (l r:list asset) :

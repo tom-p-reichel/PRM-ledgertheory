@@ -21,7 +21,7 @@ Definition cgraft : Type := list (prod hashval (sigT ctree)).
 Fixpoint cgraft_valid (G:cgraft) : Prop :=
 match G with
 | nil => True
-| (h,existT n T)::G' => ctree_hashroot T = h /\ cgraft_valid G'
+| (h,existT _ n T)::G' => ctree_hashroot T = h /\ cgraft_valid G'
 end.
 
 (*** Coercion needed due to dependent types ***)
@@ -36,7 +36,7 @@ Instead I decided to do it here. Either way a coercion using the proof of the eq
 Fixpoint cgraft_assoc (G:cgraft) (k:hashval) (m:nat) : ctree m :=
 match G with
 | nil => ctreeH m k
-| (h,existT n T)::G' =>
+| (h,existT _ n T)::G' =>
   if hashval_eq_dec h k then
     match eq_nat_dec n m with
       | left E => eqnat_coerce_ctree n m E T
